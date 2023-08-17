@@ -1,7 +1,7 @@
-var http = require('http')
-    ,app = require('./config/express');
-    
-http.createServer(app).listen(3000, function() {
-    console.log('Servidor escutando na porta: ' + this.address().port);
-});
+const express = require("express");
+const app = express();
+const PORT = process.env.PORT || 3030;
 
+app.listen(PORT, () => {
+  console.log(`server started on port ${PORT}`);
+});
