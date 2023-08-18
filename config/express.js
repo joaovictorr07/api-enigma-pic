@@ -9,14 +9,6 @@ const express = require("express"),
   fs = require("fs"),
   { commentRoutes, photoRoutes, userRoutes } = require("../app/routes");
 
-app.use(
-  cors({
-    origin: "http://localhost:4200",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
-
 const uploadDir = "./uploads";
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
@@ -44,6 +36,9 @@ app.set("secret", "your secret phrase here");
 app.set("upload", upload);
 
 const corsOptions = {
+  origin: "http://localhost:4200",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization", "x-access-token"],
   exposedHeaders: ["x-access-token"],
 };
 
