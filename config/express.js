@@ -7,8 +7,7 @@ const express = require("express"),
   multer = require("multer"),
   uuidv4 = require("uuid/v4"),
   fs = require("fs"),
-  { commentRoutes, photoRoutes, userRoutes } = require("../app/routes"),
-  cors = require("cors");
+  { commentRoutes, photoRoutes, userRoutes } = require("../app/routes");
 
 app.use(
   cors({
