@@ -36,7 +36,7 @@ app.set("secret", "your secret phrase here");
 app.set("upload", upload);
 
 const corsOptions = {
-  origin: "https://web-enigma-pic.vercel.app/",
+  origin: "https://web-enigma-pic.vercel.app",
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization", "x-access-token"],
   exposedHeaders: ["x-access-token"],
