@@ -35,12 +35,25 @@ const upload = multer({
 app.set("secret", "your secret phrase here");
 app.set("upload", upload);
 
+
+
 const corsOptions = {
-  origin: "https://web-enigma-pic.vercel.app",
+  origin: (origin, callback) => {
+    const allowedOrigins = [
+      "https://web-enigma-pic.vercel.app",
+      "http://localhost:4200",
+    ];
+
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Origin not allowed by CORS " + origin));
+    }
+  },
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization", "x-access-token"],
   exposedHeaders: ["x-access-token"],
-};
+};;
 
 app.use(express.static("uploads"));
 app.use(cors(corsOptions));

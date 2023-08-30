@@ -12,4 +12,8 @@ module.exports = app => {
         
     app.route('/user/exists/:userName')
         .get(wrapAsync(userAPI.checkUserNameTaken));
+    
+    app.route('/user/search/:userName')
+        .get(wrapAsync(userAPI.searchUser));
+
 };

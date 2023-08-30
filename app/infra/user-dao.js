@@ -74,5 +74,21 @@ class UserDao {
         });
     }
 
+    searchAllforUser(userName) {
+        return new Promise((resolve, reject) => this._db.all(
+            `SELECT * FROM user WHERE user_name LIKE ?`,
+            [`%${userName}%`],
+            (err, rows) => {
+                if (err) {
+                    console.log(err);
+                    return reject('Can`t find user');
+                }
+                 
+                const users = rows.map(userConverter);
+                return resolve(users);
+            }
+        ));
+    }
+
 }
 module.exports = UserDao;

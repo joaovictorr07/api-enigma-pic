@@ -35,4 +35,11 @@ api.checkUserNameTaken = async (req, res) => {
     res.json(!!user);
 };
 
+api.searchUser = async (req, res) => {
+    const { userName } = req.params;
+    console.log(`Search user by userName ${userName}`);
+    const listUsers = await new UserDao(req.db).searchAllforUser(userName);
+    res.json(listUsers);
+}
+
 module.exports = api;
